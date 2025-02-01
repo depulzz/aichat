@@ -1,0 +1,417 @@
+/* Root Variables */
+:root {
+    --bg-color-light: #f8f9fa;
+    --text-color-light: #212529;
+    --bg-color-dark: #212529;
+    --text-color-dark: #f8f9fa;
+    --bubble-color-ai-light: #f8d7da;
+    --bubble-color-user-light: #d1e7dd;
+    --bubble-color-ai-dark: #884242;
+    --bubble-color-user-dark: #2c6e49;
+}
+
+/* General Styles */
+body {
+    background-color: var(--bg-color, var(--bg-color-light));
+    color: var(--text-color, var(--text-color-light));
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Mengatur latar belakang api yang menyebar */
+#fire-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Efek api */
+.fire {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #ff4500; /* Warna api */
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.7);
+    animation: fire-animation 5s infinite;
+}
+
+/* Animasi pergerakan dan perubahan ukuran api */
+@keyframes fire-animation {
+    0% {
+        transform: scale(0.5) translate(0, 0);
+        opacity: 1;
+        background-color: #ff4500; /* Warna api awal */
+    }
+    25% {
+        transform: scale(1) translate(50px, -60px);
+        opacity: 0.8;
+        background-color: #ff6347; /* Warna api lebih terang */
+    }
+    50% {
+        transform: scale(1.5) translate(150px, -100px);
+        opacity: 0.6;
+        background-color: #ff7f50; /* Warna api semakin terang */
+    }
+    75% {
+        transform: scale(1) translate(200px, -200px);
+        opacity: 0.4;
+        background-color: #ffb74d; /* Warna api lebih cerah */
+    }
+    100% {
+        transform: scale(0.5) translate(250px, -250px);
+        opacity: 0;
+        background-color: #ffd54f; /* Warna api memudar */
+    }
+}
+
+/* Membuat elemen api bergerak dengan cara lebih random */
+.fire:nth-child(1) {
+    animation-delay: 0s;
+}
+.fire:nth-child(2) {
+    animation-delay: 1s;
+}
+.fire:nth-child(3) {
+    animation-delay: 2s;
+}
+.fire:nth-child(4) {
+    animation-delay: 3s;
+}
+.fire:nth-child(5) {
+    animation-delay: 4s;
+}
+
+/* Menyesuaikan ukuran dan posisi api agar tersebar di layar */
+#fire-background .fire {
+    animation-timing-function: ease-in-out;
+    animation-duration: 6s;
+}
+
+/* Menambahkan lebih banyak elemen api untuk menciptakan efek yang lebih nyata */
+.fire {
+    width: 50px;
+    height: 50px;
+    background-color: #ff4500; /* Warna api */
+    border-radius: 50%;
+    animation: fire-animation 5s infinite;
+    opacity: 0.8;
+}
+
+/* Mengatur posisi api secara acak */
+#fire-background .fire {
+    animation-timing-function: ease-in-out;
+    animation-duration: 7s;
+}
+
+/* Tambahkan lebih banyak elemen api dengan posisi acak */
+#fire-background::before,
+#fire-background::after,
+#fire-background .fire:nth-child(6),
+#fire-background .fire:nth-child(7),
+#fire-background .fire:nth-child(8),
+#fire-background .fire:nth-child(9),
+#fire-background .fire:nth-child(10),
+#fire-background .fire:nth-child(11) {
+    content: '';
+    position: absolute;
+    background-color: #ff4500;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.7);
+    animation: fire-animation 8s infinite;
+}
+
+/* Atur delay animasi agar efek api tersebar */
+#fire-background .fire:nth-child(12) {
+    animation-delay: 1s;
+}
+
+#fire-background .fire:nth-child(13) {
+    animation-delay: 2s;
+}
+
+#fire-background .fire:nth-child(14) {
+    animation-delay: 3s;
+}
+
+#fire-background .fire:nth-child(15) {
+    animation-delay: 4s;
+}
+
+/* Skala animasi api agar terlihat menyebar secara luas */
+@keyframes fire-animation {
+    0% {
+        transform: scale(0.5) translateX(0) translateY(0);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1) translateX(50vw) translateY(-50vh);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translateX(100vw) translateY(-100vh);
+        opacity: 0.6;
+    }
+    75% {
+        transform: scale(1) translateX(150vw) translateY(-150vh);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(0.5) translateX(200vw) translateY(-200vh);
+        opacity: 0;
+    }
+}
+
+/* Pastikan animasi api tersebar ke seluruh layar */
+#fire-background .fire {
+    top: calc(100vh * (random(0,1)));
+    left: calc(100vw * (random(0,1)));
+}
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding-top: 100px;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Chat Box */
+.chat-box {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Bubbles */
+.chat-bubble {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    animation: fadeIn 0.5s;
+    max-width: 75%;
+}
+
+.chat-bubble.user {
+    background-color: var(--bubble-color-user, var(--bubble-color-user-light));
+    text-align: right;
+    align-self: flex-end;
+}
+
+.chat-bubble.ai {
+    background-color: var(--bubble-color-ai, var(--bubble-color-ai-light));
+    text-align: left;
+    align-self: flex-start;
+}
+
+.typing {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    border-radius: 50%;
+    background-color: var(--text-color, var(--text-color-light));
+    animation: blink 1s infinite ease-in-out alternate;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Menu */
+.menu {
+    background-color: var(--bg-color, var(--bg-color-light));
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu .nav-pills .nav-link {
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu .nav-pills .nav-link:hover {
+    background-color: #3498db;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.menu .nav-pills .nav-link.active {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Adjust content padding for smaller screens */
+    .content {
+        padding-top: 50px;
+    }
+
+    /* Adjust chat box size */
+    .chat-box {
+        max-height: 300px;
+        padding: 0.8rem;
+    }
+
+    /* Adjust font size for headers */
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    /* Cloud sizes */
+    .cloud {
+        width: 200px;
+        height: 120px;
+    }
+
+    .menu .nav-pills .nav-link {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjust content for small screens */
+    .content {
+        padding-top: 30px;
+    }
+
+    .chat-box {
+        max-height: 250px;
+        padding: 0.5rem;
+    }
+
+    /* Adjust font size for mobile */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    /* Cloud sizes */
+    .cloud {
+        width: 150px;
+        height: 90px;
+    }
+
+    /* Adjust nav menu items for small screens */
+    .menu .nav-pills .nav-link {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+#profileContent, #profileDisplay, #settingsContent {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#profileContent h5, #profileDisplay h5, #settingsContent h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#profileContent input, #profileContent textarea {
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#profileContent button, #editButton, #editProfileButton {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #28a745; /* Green */
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+#profileContent button:hover, #editButton:hover, #editProfileButton:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+#profileContent button:active, #editButton:active, #editProfileButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    opacity: 0.9;
+}
+
+#settingsContent button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #3498db; /* Blue */
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+#settingsContent button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+#settingsContent button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    opacity: 0.9;
+}
