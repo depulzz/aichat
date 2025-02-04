@@ -235,11 +235,11 @@ class Leaf {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 15 + 5; // Ukuran lebih kecil (5-20px)
-        this.speedX = Math.random() * 1 - 0.5; // Gerakan horizontal acak
-        this.speedY = Math.random() * 2 + 0.5; // Gerakan turun ke bawah lebih lambat
+        this.size = Math.random() * 20 + 10; // Ukuran daun antara 10-30px (lebih kecil)
+        this.speedX = Math.random() * 2 - 1; // Gerakan horizontal acak
+        this.speedY = Math.random() * 2 + 1; // Gerakan turun ke bawah
         this.rotation = Math.random() * 360; // Rotasi awal
-        this.rotationSpeed = Math.random() * 1 - 0.5; // Rotasi lebih halus
+        this.rotationSpeed = Math.random() * 2 - 1; // Rotasi ke kiri/kanan
     }
 
     update() {
@@ -247,7 +247,7 @@ class Leaf {
         this.y += this.speedY;
         this.rotation += this.rotationSpeed;
 
-        // Jika daun keluar dari bawah layar, reset ke atas
+        // Jika daun keluar dari bawah layar, kembalikan ke atas
         if (this.y > canvas.height) {
             this.y = -this.size;
             this.x = Math.random() * canvas.width;
@@ -255,7 +255,7 @@ class Leaf {
     }
 
     draw() {
-        ctx.font = `${this.size}px Arial`;
+        ctx.font = `${this.size}px Arial`; // Menyesuaikan ukuran font dengan size daun
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate((this.rotation * Math.PI) / 180);
@@ -264,8 +264,8 @@ class Leaf {
     }
 }
 
-// Buat banyak daun kecil
-for (let i = 0; i < 100; i++) {
+// Buat banyak daun
+for (let i = 0; i < 50; i++) {
     leaves.push(new Leaf());
 }
 
