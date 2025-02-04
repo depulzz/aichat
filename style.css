@@ -13,15 +13,6 @@
     --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
     --shadow-dark: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-#animatedBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -10; /* Pastikan di belakang semua elemen */
-    pointer-events: none; /* Hindari interaksi dengan elemen */
-}
 /* General Styles */
 .body {
     background-color: var(--bg-color-light);
