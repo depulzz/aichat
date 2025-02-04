@@ -13,22 +13,39 @@
     --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
     --shadow-dark: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-
+#animatedBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10; /* Pastikan di belakang semua elemen */
+    pointer-events: none; /* Hindari interaksi dengan elemen */
+}
 /* General Styles */
-body {
+.body {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
     transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial,Sans-Serif;
+    overflow-x: hidden;
 }
-
+#animatedBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Pastikan di belakang semua elemen */
+    pointer-events: none; /* Hindari interaksi dengan elemen */
+}
 /* Chat Box */
 .chat-box {
     max-height: 400px;
     overflow-y: auto;
+    font-family:Arial,Sans-Serif;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 1rem;
