@@ -31,7 +31,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Pastikan di belakang semua elemen */
+    z-index: 20; /* Pastikan di belakang semua elemen */
     pointer-events: none; /* Hindari interaksi dengan elemen */
 }
 /* Chat Box */
@@ -92,46 +92,7 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Fire Background */
-#fire-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-}
 
-/* Efek Api */
-.fire {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #ff4500;
-    border-radius: 50%;
-    box-shadow: 0 0 15px rgba(255, 69, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.7);
-    animation: fire-animation 5s infinite;
-}
-
-/* Animasi Api */
-@keyframes fire-animation {
-    0% { transform: scale(0.5) translateY(0); opacity: 1; }
-    50% { transform: scale(1.5) translateY(-100px); opacity: 0.6; }
-    100% { transform: scale(0.5) translateY(-200px); opacity: 0; }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .chat-box { max-height: 300px; padding: 0.8rem; }
-    .chat-bubble { font-size: 14px; max-width: 85%; }
-}
-
-@media (max-width: 480px) {
-    .chat-box { max-height: 250px; padding: 0.5rem; }
-    .chat-bubble { font-size: 13px; max-width: 90%; }
-}
 
 /* Menu */
 .menu {
@@ -160,7 +121,7 @@
 }
 
 /* Profile & Settings */
-#profileContent, #profileDisplay, #settingsContent {
+ #profileDisplay, #settingsContent {
     background-color: #f8f9fa;
     border-radius: 10px;
     padding: 20px;
@@ -205,4 +166,60 @@
 #settingsContent button:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
+}
+/* Styling tombol bulat */
+/* Container untuk input dan ikon */
+/* Container untuk input dan ikon */
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px; /* Lebar maksimal */
+  margin: auto; /* Pusatkan */
+  padding: 10px;
+  gap: 10px; /* Jarak antar kolom input dan ikon */
+}
+
+/* Styling kolom input */
+.form-control {
+  width: 100px;
+  padding: 10px 20px; /* Ruang lebih pada kolom */
+  border: 1px solid #ccc; /* Border tipis untuk input */
+  outline: none; /* Hapus garis fokus */
+  border-radius: 30px; /* Sudut sedikit bulat */
+  font-size: 16px;
+  background: #ffffff; /* Warna putih */
+  color: #333;
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efek saat input difokuskan */
+.form-control:focus {
+  background: #f9f9f9; /* Warna sedikit lebih terang saat difokuskan */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan lembut */
+}
+
+/* Styling ikon di samping kolom input */
+.input-icon {
+  font-size: 24px; /* Ukuran ikon */
+  color: #aaa; /* Warna ikon abu-abu */
+  cursor: pointer; /* Membuat ikon dapat diklik */
+}
+
+/* Efek hover pada ikon */
+.input-icon:hover {
+  color: #333; /* Warna ikon lebih gelap saat hover */
+}
+
+.input-submit {
+ border-radius: 50%;
+ height: 35px;
+ width: 35px;
+ border: none;
+ background-color: transparent;
+}
+
+.input-submit ion-icon {
+ font-size: 34px;
 }

@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Elemen Chat
     const chatForm = document.getElementById("chatForm");
     const userInput = document.getElementById("userInput");
-    const emojiButton = document.getElementById("emojiButton");
-    const emojiPicker = document.getElementById("emojiPicker");
     const saveChatButton = document.getElementById("saveChat");
     const loadChatButton = document.getElementById("loadChat");
     const fileUpload = document.getElementById("fileUpload");
@@ -13,9 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Elemen Profil
     const userNameInput = document.getElementById("userName");
     const userBioInput = document.getElementById("userBio");
-    const saveProfileButton = document.getElementById("saveProfile");
+    const saveProfileButton = document.getElementById("saveProfileButton");
     const displayProfileButton = document.getElementById("displayProfile");
     const profileContent = document.getElementById("profileContent");
+    
     const profileDisplay = document.getElementById("profileDisplay");
     const profileNameDisplay = document.getElementById("displayUsername");
     const profileBioDisplay = document.getElementById("displayBio");
@@ -49,27 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     appendMessage("Hello, how can I help you?", "ai");
                 }, 1000);
             }, 500);
-        }
-    });
-
-    // Emoji Picker
-    emojiButton.addEventListener("click", function () {
-        emojiPicker.classList.toggle("d-none");
-    });
-
-    // Menambahkan emoji ke input
-    emojiPicker.addEventListener("click", function (event) {
-        if (event.target.classList.contains("emoji")) {
-            const emoji = event.target.getAttribute("data-emoji");
-            userInput.value += emoji;
-            emojiPicker.classList.add("d-none"); // Menyembunyikan emoji picker setelah memilih emoji
-        }
-    });
-
-    // Menyembunyikan emoji picker jika klik di luar
-    document.addEventListener("click", function (event) {
-        if (!emojiButton.contains(event.target) && !emojiPicker.contains(event.target)) {
-            emojiPicker.classList.add("d-none");
         }
     });
 
@@ -112,26 +90,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Menyimpan profil ke localStorage
-    saveProfileButton.addEventListener("click", function () {
-        const userName = userNameInput.value.trim();
-        const userBio = userBioInput.value.trim();
-
-        if (userName && userBio) {
-            localStorage.setItem("userName", userName);
-            localStorage.setItem("userBio", userBio);
-            alert("Profile saved!");
-            showProfile(userName, userBio);
-        } else {
-            alert("Please enter both username and bio.");
-        }
-    });
+    //  saveProfileButton.addEventListener("click", function () {
+//         const userName = userNameInput.value.trim();
+//         const userBio = userBioInput.value.trim();
+// 
+//         if (userName && userBio) {
+//             localStorage.setItem("userName", userName);
+//             localStorage.setItem("userBio", userBio);
+//             alert("Profile saved!");
+//             showProfile(userName, userBio);
+//         } else {
+//             alert("Please enter both username and bio.");
+//         }
+//     });
 
     // Menampilkan profil
     function showProfile(userName, userBio) {
         profileNameDisplay.textContent = userName;
         profileBioDisplay.textContent = userBio;
-        profileContent.classList.add("d-none");
-        profileDisplay.classList.remove("d-none");
     }
 
     // Tampilkan profil saat pertama kali dimuat
@@ -141,17 +117,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (savedUserName && savedUserBio) {
         showProfile(savedUserName, savedUserBio);
     } else {
-        profileContent.classList.remove("d-none");
+     console.log('else')
     }
 
     // Tombol untuk menampilkan profil
-    displayProfileButton.addEventListener("click", function () {
-        if (savedUserName && savedUserBio) {
-            showProfile(savedUserName, savedUserBio);
-        } else {
-            alert("No profile data found.");
-        }
-    });
+    
 
     // Tombol Edit profil
     document.getElementById("editProfileButton").addEventListener("click", function () {
@@ -193,33 +163,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileContainer = document.getElementById("profileContainer");
 
     // Fungsi untuk menyembunyikan semua konten
-    function hideAllContent() {
-        chatContainer.style.display = "none";
-        settingsContainer.style.display = "none";
-        profileContainer.style.display = "none";
-    }
-
-    // Fungsi untuk menampilkan konten
-    function showContent(content) {
-        hideAllContent();
-        content.style.display = "block";
-    }
+    
 
     // Event listener untuk menu navigasi
     chatMenu.addEventListener("click", function () {
         showContent(chatContainer);
     });
 
-    settingsMenu.addEventListener("click", function () {
-        showContent(settingsContainer);
-    });
 
-    profileMenu.addEventListener("click", function () {
-        showContent(profileContainer);
-    });
-
-    // Tampilkan chat secara default
-    showContent(chatContainer);
 });
 const canvas = document.getElementById("animatedBackground");
 const ctx = canvas.getContext("2d");
@@ -237,7 +188,7 @@ class Leaf {
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 20 + 10; // Ukuran daun antara 10-30px (lebih kecil)
         this.speedX = Math.random() * 2 - 1; // Gerakan horizontal acak
-        this.speedY = Math.random() * 2 + 1; // Gerakan turun ke bawah
+        this.speedY = Math.random() * 0.5 + 0.5; // Gerakan vertikal lebih pelan (antara 0.5-1)
         this.rotation = Math.random() * 360; // Rotasi awal
         this.rotationSpeed = Math.random() * 2 - 1; // Rotasi ke kiri/kanan
     }
