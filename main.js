@@ -129,22 +129,23 @@ document.addEventListener("DOMContentLoaded", function () {
         profileDisplay.classList.add("d-none");
     });
 
-    // Pengaturan dark mode
-    darkModeToggle.addEventListener("change", function () {
-        if (this.checked) {
-            document.body.classList.add("dark-mode");
-            localStorage.setItem("darkMode", "true");
-        } else {
-            document.body.classList.remove("dark-mode");
-            localStorage.setItem("darkMode", "false");
-        }
-    });
+const themeSwitcher = document.getElementById("themeSwitcher");
 
-    // Mengatur dark mode saat pertama kali
-    if (localStorage.getItem("darkMode") === "true") {
-        darkModeToggle.checked = true;
-        document.body.classList.add("dark-mode");
+// Cek jika localStorage sudah menyimpan dark mode
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+}
+
+// Event listener untuk mengaktifkan atau menonaktifkan dark mode
+themeSwitcher.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "true");
+    } else {
+        localStorage.setItem("darkMode", "false");
     }
+});
 
     // Reset pengaturan
     resetSettingsButton.addEventListener("click", function () {
@@ -173,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 const canvas = document.getElementById("animatedBackground");
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("3d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
